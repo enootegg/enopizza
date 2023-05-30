@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-const MONGO_URL = process.env.MONGO_URL;
+// const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL =
+  "mongodb+srv://admin:admin123@cluster0.jasxc.mongodb.net/pizza?retryWrites=true&w=majority";
 
 if (!MONGO_URL) {
   throw new Error(
