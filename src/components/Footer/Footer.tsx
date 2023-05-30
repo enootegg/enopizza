@@ -11,6 +11,7 @@ import {
   Call,
   Mail,
 } from "@/components/Icons";
+import { domain } from "utils/config";
 
 const Footer: FC = () => {
   return (
@@ -101,7 +102,7 @@ const Footer: FC = () => {
             <span>UA</span>/
             <span>
               {/* <Link href="http://localhost:3000/img/mda.jpg">RU</Link> */}
-              <Link href="https://enopizza.vercel.app/img/mda.jpg">RU</Link>
+              <Link href={`${domain}img/mda.jpg`}>RU</Link>
             </span>
           </div>
         </div>

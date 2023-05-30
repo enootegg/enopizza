@@ -12,6 +12,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "redux/cartSlice";
 import { OrderDetails } from "@/components";
+import { domain } from "utils/config";
 
 const Cart: NextPage = () => {
   const dispatch = useDispatch();
@@ -29,10 +30,7 @@ const Cart: NextPage = () => {
   const createOrder = async (data: any) => {
     try {
       // const res = await axios.post("http://localhost:3000/api/orders", data);
-      const res = await axios.post(
-        "https://enopizza.vercel.app/api/orders",
-        data
-      );
+      const res = await axios.post(`${domain}api/orders`, data);
       res.status === 201 && router.push("/orders/" + res.data._id);
       dispatch(reset());
     } catch (error) {

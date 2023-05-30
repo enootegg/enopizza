@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { getCookie } from "cookies-next";
 import { Pizza } from "@/interfaces";
+import { domain } from "utils/config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,7 +65,7 @@ export const getServerSideProps = async (ctx: any) => {
   }
 
   // const res = await axios.get("http://localhost:3000/api/products");
-  const res = await axios.get("https://enopizza.vercel.app/api/products");
+  const res = await axios.get(`${domain}api/products`);
   return {
     props: {
       pizzaList: res.data,

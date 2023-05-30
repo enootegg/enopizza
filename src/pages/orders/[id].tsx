@@ -8,6 +8,7 @@ import axios from "axios";
 import Image from "next/image";
 import styles from "./styles/Orders.module.scss";
 import { ParsedUrlQuery } from "querystring";
+import { domain } from "utils/config";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -154,9 +155,7 @@ const Order: NextPage<Props> = ({ order }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   // const res = await axios.get(`http://localhost:3000/api/orders/${params?.id}`);
-  const res = await axios.get(
-    `https://enopizza.vercel.app/api/orders/${params?.id}`
-  );
+  const res = await axios.get(`${domain}api/orders/${params?.id}`);
   return {
     props: {
       order: res.data,

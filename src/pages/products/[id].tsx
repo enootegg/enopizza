@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "redux/cartSlice";
 import { ParsedUrlQuery } from "querystring";
+import { domain } from "utils/config";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -149,7 +150,7 @@ const Products: NextPage<Props> = ({ pizza }) => {
 export const getServerSideProps = async ({ params }: any) => {
   const res = await axios.get(
     // `http://localhost:3000/api/products/${params.id}`
-    `https://enopizza.vercel.app/api/products/${params.id}`
+    `${domain}api/products/${params.id}`
   );
   return {
     props: {

@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./styles/Add.module.scss";
 import { useState } from "react";
 import axios from "axios";
+import { domain } from "utils/config";
 
 const Add: FC<{ setClose: any }> = ({ setClose }) => {
   const [file, setFile] = useState<any>(null);
@@ -43,7 +44,7 @@ const Add: FC<{ setClose: any }> = ({ setClose }) => {
         img: url,
       };
       // await axios.post("http://localhost:3000/api/products", newProduct);
-      await axios.post("https://enopizza.vercel.app/api/products", newProduct);
+      await axios.post(`${domain}api/products`, newProduct);
       setClose(true);
     } catch (error) {
       console.log(error);

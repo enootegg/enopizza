@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import styles from "./styles/Login.module.scss";
+import { domain } from "utils/config";
 
 const Login: NextPage = () => {
   const [username, setUsername] = useState<string | null>(null);
@@ -13,7 +14,7 @@ const Login: NextPage = () => {
   const handleClick = async () => {
     try {
       // await axios.post("http://localhost:3000/api/login", {
-      await axios.post("https://enopizza.vercel.app/api/login", {
+      await axios.post(`${domain}api/login`, {
         username,
         password,
       });
