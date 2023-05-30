@@ -15,7 +15,14 @@ export default async function handler(
 
   const token = cookies.token;
 
-  dbConnect();
+  // dbConnect();
+
+  try {
+    dbConnect();
+    console.log("db connected");
+  } catch (error) {
+    console.log(error);
+  }
 
   if (method === "GET") {
     try {
