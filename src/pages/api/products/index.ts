@@ -22,6 +22,7 @@ export default async function handler(
     console.log("db connected");
   } catch (error) {
     console.log(error);
+    res.status(500).json("PIZDAaaaaaaaa");
   }
 
   if (method === "GET") {
