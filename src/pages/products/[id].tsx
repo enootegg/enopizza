@@ -123,22 +123,32 @@ const Products: NextPage<Props> = ({ pizza }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const res = await axios.get("http://localhost:3000/api/products");
+// export const getStaticPaths: GetStaticPaths<Params> = async () => {
+//   const res = await axios.get("http://localhost:3000/api/products");
 
-  return {
-    paths: res.data.map((pizza: any) => ({
-      params: {
-        id: pizza._id,
-      },
-    })),
-    fallback: "blocking",
-  };
-};
+//   return {
+//     paths: res.data.map((pizza: any) => ({
+//       params: {
+//         id: pizza._id,
+//       },
+//     })),
+//     fallback: "blocking",
+//   };
+// };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   const res = await axios.get(
+//     `http://localhost:3000/api/products/${params?.id}`
+//   );
+//   return {
+//     props: {
+//       pizza: res.data,
+//     },
+//   };
+// };
+export const getServerSideProps = async ({ params }: any) => {
   const res = await axios.get(
-    `http://localhost:3000/api/products/${params?.id}`
+    `http://localhost:3000/api/products/${params.id}`
   );
   return {
     props: {

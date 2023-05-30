@@ -45,29 +45,29 @@ export default function Home({ pizzaList, token }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await axios.get<[Pizza]>("http://localhost:3000/api/products");
-  return {
-    props: {
-      pizzaList: res.data,
-      token: process.env.TOKEN,
-    },
-  };
-};
-
-// export const getServerSideProps = async (ctx: any) => {
-//   const myCookie = ctx.req?.cookies || "";
-//   let admin = false;
-
-//   if (myCookie.token === process.env.TOKEN) {
-//     admin = true;
-//   }
-
-//   const res = await axios.get("http://localhost:3000/api/products");
+// export const getStaticProps: GetStaticProps = async () => {
+//   const res = await axios.get<[Pizza]>("http://localhost:3000/api/products");
 //   return {
 //     props: {
 //       pizzaList: res.data,
-//       admin,
+//       token: process.env.TOKEN,
 //     },
 //   };
 // };
+
+export const getServerSideProps = async (ctx: any) => {
+  const myCookie = ctx.req?.cookies || "";
+  let admin = false;
+
+  if (myCookie.token === process.env.TOKEN) {
+    admin = true;
+  }
+
+  const res = await axios.get("http://localhost:3000/api/products");
+  return {
+    props: {
+      pizzaList: res.data,
+      admin,
+    },
+  };
+};

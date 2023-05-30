@@ -130,29 +130,20 @@ const Order: NextPage<Props> = ({ order }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const res = await axios.get("http://localhost:3000/api/orders");
+// export const getStaticPaths: GetStaticPaths<Params> = async () => {
+//   const res = await axios.get("http://localhost:3000/api/orders");
 
-  return {
-    paths: res.data.map((order: any) => ({
-      params: {
-        id: order._id,
-      },
-    })),
-    fallback: "blocking",
-  };
-};
+//   return {
+//     paths: res.data.map((order: any) => ({
+//       params: {
+//         id: order._id,
+//       },
+//     })),
+//     fallback: "blocking",
+//   };
+// };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/orders/${params?.id}`);
-  return {
-    props: {
-      order: res.data,
-    },
-  };
-};
-
-// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
 //   const res = await axios.get(`http://localhost:3000/api/orders/${params?.id}`);
 //   return {
 //     props: {
@@ -160,5 +151,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 //     },
 //   };
 // };
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const res = await axios.get(`http://localhost:3000/api/orders/${params?.id}`);
+  return {
+    props: {
+      order: res.data,
+    },
+  };
+};
 
 export default Order;
