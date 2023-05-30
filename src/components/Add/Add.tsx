@@ -4,22 +4,22 @@ import { useState } from "react";
 import axios from "axios";
 
 const Add: FC<{ setClose: any }> = ({ setClose }) => {
-  const [file, setFile] = useState(null);
-  const [title, setTitle] = useState<string>(null);
+  const [file, setFile] = useState<any>(null);
+  const [title, setTitle] = useState<string | null>(null);
   const [desc, setDesc] = useState(null);
-  const [prices, setPrices] = useState([]);
-  const [extra, setExtra] = useState(null);
-  const [extraOptions, setExtraOptions] = useState([]);
+  const [prices, setPrices] = useState<any>([]);
+  const [extra, setExtra] = useState<any>(null);
+  const [extraOptions, setExtraOptions] = useState<any>([]);
 
-  const handleExtraInput = (e) => {
+  const handleExtraInput = (e: any) => {
     setExtra({ ...extra, [e.target.name]: e.target.value });
   };
 
-  const handleExtra = (e) => {
-    setExtraOptions((prev) => [...prev, extra]);
+  const handleExtra = (e: any) => {
+    setExtraOptions((prev: any) => [...prev, extra]);
   };
 
-  const changePrice = (e, index) => {
+  const changePrice = (e: any, index: number) => {
     const currentPrices = prices;
     currentPrices[index] = e.target.value;
     setPrices(currentPrices);
@@ -61,7 +61,7 @@ const Add: FC<{ setClose: any }> = ({ setClose }) => {
           <input
             type="file"
             className={styles.input}
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e: any) => setFile(e.target.files[0])}
           />
         </div>
         <div className={styles.item}>
@@ -76,9 +76,9 @@ const Add: FC<{ setClose: any }> = ({ setClose }) => {
           <label className={styles.label}>Desc</label>
           <textarea
             rows={4}
-            type="text"
+            // type="text"
             className={styles.textarea}
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e: any) => setDesc(e.target.value)}
           />
         </div>
         <div className={styles.item}>
@@ -126,7 +126,7 @@ const Add: FC<{ setClose: any }> = ({ setClose }) => {
             </button>
           </div>
           <div className={styles.extraItems}>
-            {extraOptions.map((option) => (
+            {extraOptions.map((option: any) => (
               <span key={option.text} className={styles.extraItem}>
                 {option.text}
               </span>
