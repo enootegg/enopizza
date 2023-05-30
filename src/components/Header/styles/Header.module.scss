@@ -1,0 +1,105 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 0 80px;
+  z-index: 100;
+  nav {
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin-right: 34px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        &:last-child {
+          margin-right: 0;
+        }
+        &:hover {
+          color: #ba1200;
+          transition: all 0.3s ease;
+        }
+        &.cart {
+          .quantity {
+            border-radius: 50%;
+            background-color: #ba1200;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: -8px;
+            top: -10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s ease;
+          }
+          &:hover {
+            .quantity {
+              background-color: #862e2e;
+              transition: all 0.3s ease;
+            }
+          }
+        }
+        .link {
+          text-decoration: none;
+          color: #000;
+          transition: all 0.3s ease;
+          &:hover {
+            color: #ba1200;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+  .left {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+  }
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+  }
+  a {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+  }
+  .burger {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    padding: 0 20px;
+  }
+  .img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .left,
+  .right {
+    display: none !important;
+  }
+  .burger {
+    display: block !important;
+  }
+  .img {
+    margin-left: -40px;
+  }
+}

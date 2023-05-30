@@ -1,0 +1,141 @@
+.container {
+  // width: 100vw;
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .imageBlock {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .image {
+      animation: spin 28s infinite linear;
+      cursor: pointer;
+      z-index: 0;
+    }
+    span {
+      z-index: 2;
+      font-size: 36px;
+      font-weight: 700;
+    }
+    .text {
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 14px;
+      .link {
+        text-decoration: none;
+      }
+      .btn {
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        border: none;
+        background: none;
+        --primary-color: #111;
+        --hovered-color: #ba1200;
+        position: relative;
+        display: flex;
+        font-weight: 600;
+        font-size: 20px;
+        gap: 0.5rem;
+        align-items: center;
+        z-index: 2;
+        cursor: pointer;
+        p {
+          margin: 0;
+          position: relative;
+          font-size: 16px;
+          color: var(--primary-color);
+          &::before {
+            position: absolute;
+            content: "Переглянути";
+            width: 0%;
+            inset: 0;
+            color: var(--hovered-color);
+            overflow: hidden;
+            transition: 0.3s ease-out;
+          }
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          width: 0;
+          left: 0;
+          bottom: -3px;
+          background: var(--hovered-color);
+          height: 2px;
+          transition: 0.3s ease-out;
+        }
+        &:hover::after {
+          width: 100%;
+        }
+        &:hover {
+          p::before {
+            width: 100%;
+          }
+          svg {
+            transform: translateX(4px);
+            color: var(--hovered-color);
+          }
+        }
+        svg {
+          color: var(--primary-color);
+          transition: 0.2s;
+          position: relative;
+          width: 15px;
+          transition-delay: 0.2s;
+        }
+      }
+    }
+  }
+  .veryTastyIcon {
+    position: absolute;
+    top: 90px;
+    left: 16%;
+    z-index: 2;
+    animation: spinReverse 28s infinite linear;
+  }
+  .aromatic {
+    position: absolute;
+    top: 126px;
+    right: 12%;
+    z-index: 2;
+    animation: spinReverse 28s infinite linear;
+  }
+  .memory {
+    position: absolute;
+    top: 506px;
+    left: 12%;
+    z-index: 2;
+    animation: spinReverse 28s infinite linear;
+  }
+  .classic {
+    position: absolute;
+    top: 470px;
+    right: 10%;
+    z-index: 2;
+    animation: spinReverse 28s infinite linear;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
