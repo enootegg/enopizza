@@ -31,7 +31,8 @@ export default async function handler(
       res.status(200).json(products);
     } catch (err) {
       // res.status(500).json(err);
-      res.status(500).json("PIZDA");
+      // res.status(500).json("PIZDA");
+      res.status(500).json({ err });
     }
   }
 
