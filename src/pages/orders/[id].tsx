@@ -153,7 +153,10 @@ const Order: NextPage<Props> = ({ order }) => {
 // };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/orders/${params?.id}`);
+  // const res = await axios.get(`http://localhost:3000/api/orders/${params?.id}`);
+  const res = await axios.get(
+    `https://enopizza.vercel.app/api/orders/${params?.id}`
+  );
   return {
     props: {
       order: res.data,

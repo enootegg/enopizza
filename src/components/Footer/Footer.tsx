@@ -100,7 +100,8 @@ const Footer: FC = () => {
           <div className={styles.lang}>
             <span>UA</span>/
             <span>
-              <Link href="http://localhost:3000/img/mda.jpg">RU</Link>
+              {/* <Link href="http://localhost:3000/img/mda.jpg">RU</Link> */}
+              <Link href="https://enopizza.vercel.app/img/mda.jpg">RU</Link>
             </span>
           </div>
         </div>
